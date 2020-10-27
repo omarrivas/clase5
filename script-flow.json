@@ -1,0 +1,155 @@
+{
+    "nodes": [
+        {
+            "uid": "JK1t",
+            "x": 100,
+            "y": 100,
+            "type": "StartNode",
+            "next_node": "586L",
+            "label": ""
+        },
+        {
+            "uid": "586L",
+            "x": 325,
+            "y": 100,
+            "type": "ActivityNode",
+            "next_node": "Gn3O",
+            "label": "",
+            "activity": "automagica.activities.Chrome.__init__",
+            "args": {
+                "self": "chrome",
+                "load_images": true,
+                "headless": false,
+                "incognito": false,
+                "disable_extension": false,
+                "maximize_window": "True",
+                "focus_window": "True"
+            },
+            "class": "chrome",
+            "return_": null,
+            "on_exception_node": null
+        },
+        {
+            "uid": "Gn3O",
+            "x": 525,
+            "y": 100,
+            "type": "ActivityNode",
+            "next_node": "jstk",
+            "label": "",
+            "activity": "automagica.activities.Chrome.browse_to",
+            "args": {
+                "self": "chrome",
+                "url": "\"https://es.wikipedia.org\""
+            },
+            "class": "chrome",
+            "return_": "",
+            "on_exception_node": null
+        },
+        {
+            "uid": "jstk",
+            "x": 750,
+            "y": 100,
+            "type": "ActivityNode",
+            "next_node": "9qZ3",
+            "label": "",
+            "activity": "automagica.activities.Chrome.by_xpath",
+            "args": {
+                "self": "chrome",
+                "element": "'//*[@id=\"searchInput\"]'"
+            },
+            "class": "chrome",
+            "return_": "busqueda",
+            "on_exception_node": null
+        },
+        {
+            "uid": "9qZ3",
+            "x": 925,
+            "y": 100,
+            "type": "PythonCodeNode",
+            "next_node": "3TQx",
+            "code": "busqueda.send_keys(\"robot\")\n",
+            "on_exception_node": null,
+            "label": ""
+        },
+        {
+            "uid": "3TQx",
+            "x": 1100,
+            "y": 100,
+            "type": "ActivityNode",
+            "next_node": "Vhd9",
+            "label": "",
+            "activity": "automagica.activities.press_key",
+            "args": {
+                "key": "'enter'",
+                "delay": "1",
+                "perform_n_times": "1",
+                "delay_between": "0.5"
+            },
+            "class": null,
+            "return_": "",
+            "on_exception_node": null
+        },
+        {
+            "uid": "Vhd9",
+            "x": 1300,
+            "y": 100,
+            "type": "ActivityNode",
+            "next_node": "HkSM",
+            "label": "",
+            "activity": "automagica.activities.Chrome.get_text_on_webpage",
+            "args": {
+                "self": "chrome"
+            },
+            "class": "chrome",
+            "return_": "texto",
+            "on_exception_node": null
+        },
+        {
+            "uid": "HkSM",
+            "x": 1300,
+            "y": 300,
+            "type": "ActivityNode",
+            "next_node": "E6Cl",
+            "label": "",
+            "activity": "automagica.activities.print_console",
+            "args": {
+                "data": "texto"
+            },
+            "class": null,
+            "return_": null,
+            "on_exception_node": null
+        },
+        {
+            "uid": "E6Cl",
+            "x": 1300,
+            "y": 450,
+            "type": "ActivityNode",
+            "next_node": "EX1Q",
+            "label": null,
+            "activity": "automagica.activities.Chrome.exit",
+            "args": {
+                "self": "chrome"
+            },
+            "class": "chrome",
+            "return_": null,
+            "on_exception_node": null
+        },
+        {
+            "uid": "EX1Q",
+            "x": 1025,
+            "y": 450,
+            "type": "ActivityNode",
+            "next_node": null,
+            "label": "",
+            "activity": "automagica.activities.make_text_file",
+            "args": {
+                "text": "texto",
+                "output_path": "\"C:/Users/orivas/Desktop/salidafinal.txt\""
+            },
+            "class": null,
+            "return_": "",
+            "on_exception_node": null
+        }
+    ],
+    "name": "Unnamed Flow"
+}
